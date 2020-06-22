@@ -17,20 +17,18 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
+background = ${xrdb:color0:#222}
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
 
 [bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 40
+height = 36
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -45,11 +43,9 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-padding-left = 0
-padding-right = 2
+padding = 1
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin = 1
 
 font-0 = MesloLGS NF:pixelsize=14;1
 font-1 = MesloLGS NF:pixelsize=18;1
@@ -80,22 +76,6 @@ cursor-scroll = ns-resize
 type = internal/xwindow
 label = %title:0:30:...%
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
 [module/filesystem]
 type = internal/fs
 interval = 25
@@ -109,14 +89,14 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
-ws-icon-0 = "main; "
-ws-icon-1 = "web; "
-ws-icon-2 = "chat;ﭮ "
-ws-icon-3 = "mail; "
-ws-icon-4 = "other; "
+ws-icon-0 = "main;"
+ws-icon-1 = "web;"
+ws-icon-2 = "chat;ﭮ"
+ws-icon-3 = "mail;"
+ws-icon-4 = "other;"
 
 label-focused = %icon%
-label-focused-background = ${colors.background-alt}
+; label-focused-underline = ${colors.primary}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 label-focused-font = 2
@@ -176,7 +156,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-prefix-font = 2
-format-underline = #f90000
+format-underline = ${colors.primary}
 label = %percentage:2%%
 
 [module/memory]
@@ -185,7 +165,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-prefix-font = 2
-format-underline = #4bffdc
+format-underline = ${colors.primary}
 label = %percentage_used%%
 
 [module/wlan]
@@ -194,8 +174,9 @@ interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %{T2}直%{T-} %essid%
+format-connected-prefix = %{T2}直%{T-}
+format-connected-underline = ${colors.primary}
+label-connected = " %essid%"
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
@@ -216,7 +197,7 @@ type = internal/network
 interface = eno1
 interval = 3.0
 
-format-connected-underline = #55aa55
+format-connected-underline = ${colors.primary}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
@@ -231,16 +212,16 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date = 
+date-alt = "%Y-%m-%d"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = "%H:%M"
+time-alt = "%H:%M:%S"
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground}
 format-prefix-font = 2
-format-underline = #0a6cf5
+format-underline = ${colors.primary}
 
 label = %date% %time%
 
@@ -249,10 +230,12 @@ type = internal/pulseaudio
 
 ;format-volume = <label-volume> <bar-volume>
 format-volume = <label-volume>
-label-volume = %{T2}墳%{T-} %percentage%%
+format-volume-underline = ${colors.primary}
+format-volume-prefix = " %{T2}墳%{T-} "
+label-volume =  "%percentage%% "
 label-volume-foreground = ${root.foreground}
 
-label-muted = %{T2}婢%{T-} muted
+label-muted = " %{T2}婢%{T-} muted "
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -276,12 +259,14 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.primary}
+label-charging = "%percentage%%" 
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
+label-discharging = "%percentage%%"
 
-format-full-prefix = " "
+format-full-prefix = 
 format-full-prefix-foreground = ${colors.foreground}
 format-full-prefix-font = 2
 format-full-underline = ${self.format-charging-underline}
@@ -318,12 +303,12 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.primary}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
-label-warn = %temperature-c%
+label = "%temperature-c% "
+label-warn = "%temperature-c% "
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 

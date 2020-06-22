@@ -51,6 +51,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
+Plug 'dylanaraps/wal.vim'
 
 call plug#end() 
 
@@ -80,4 +81,4 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == ""
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:airline_theme='cool'
-colorscheme brogrammer 
+colorscheme wal

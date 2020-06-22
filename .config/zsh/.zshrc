@@ -122,3 +122,6 @@ fi
 
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
+
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
