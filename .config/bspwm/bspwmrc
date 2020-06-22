@@ -1,0 +1,27 @@
+#! /bin/sh
+
+killall -q polybar
+sxhkd &
+polybar main &
+flameshot &
+compton -b --config ~/.config/compton/compton.conf
+dunst &
+nm-applet &
+feh --bg-fill ~/Pictures/wallpaper.jpg
+pgrep firefox || firefox &
+discord &
+thunderbird &
+
+
+bspc monitor -d main web chat mail other
+
+bspc config border_width         0
+bspc config window_gap          12
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a firefox desktop='^2'
+bspc rule -a discord desktop='^3'
+bspc rule -a Thunderbird desktop='^4'
