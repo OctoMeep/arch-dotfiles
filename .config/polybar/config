@@ -27,11 +27,11 @@ alert = ${xrdb:color3:#222}
 
 [bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
+width = 1904
 height = 36
-;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
+offset-x = 8
+offset-y = 8
+;radius = 6.0
 fixed-center = true
 
 background = ${colors.background}
@@ -174,13 +174,12 @@ interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <label-connected>
-format-connected-prefix = %{T2}直%{T-}
 format-connected-underline = ${colors.primary}
-label-connected = " %essid%"
+label-connected = "%{A1:nm-connection-editor:}%{T2}直%{T-} %essid%%{A}"
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = 睊
+label-disconnected = %{A1:nm-connection-editor:}睊%{A}
 label-disconnected-foreground = ${colors.foreground-alt}
 label-disconnected-font = 2
 
@@ -340,10 +339,10 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = systemctl reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = systemctl poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
@@ -351,6 +350,11 @@ menu-2-1-exec = menu-open-0
 type = custom/script  
 exec = "$HOME/Downloads/polybar-kdeconnect/polybar-kdeconnect.sh -d"  
 tail = true
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = $HOME/Downloads/polybar-scripts/polybar-scripts/updates-pacman-aurhelper/updates-pacman-aurhelper.sh
+interval = 600
 
 [settings]
 screenchange-reload = true

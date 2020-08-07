@@ -25,6 +25,7 @@ set mouse=a
 set laststatus=2
 set guifont=SourceCodePro+Powerline+Awesome:h12
 set conceallevel=2
+set inccommand=nosplit
 syntax on
 
 set rtp+=~/.vim/bundle/Vundle.vim

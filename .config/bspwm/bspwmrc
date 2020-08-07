@@ -1,5 +1,6 @@
 #! /bin/sh
 
+xss-lock -- betterlockscreen -l blur &
 wal -R
 killall -q polybar
 sxhkd &

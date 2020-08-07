@@ -141,5 +141,9 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
     xbacklight -dec 10
 
-super + l
-	betterlockscreen -l blur
+super + Delete
+    betterlockscreen -l blur
+
+ctrl + super + @space
+	rofimoji
+
