@@ -9,9 +9,11 @@ flameshot &
 compton -b --config ~/.config/compton/compton.conf
 dunst &
 nm-applet &
-feh --bg-fill ~/Pictures/wallpaper.jpg
+blueman-applet &
+# feh --bg-fill ~/Pictures/wallpaper.jpg
 pgrep firefox || firefox &
 discord &
+protonmail-bridge --no-window &
 thunderbird &
 
 

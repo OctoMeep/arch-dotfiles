@@ -10,6 +10,9 @@ autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c
 autocmd Filetype markdown map <F5> :silent !/usr/local/bin/pandoc "%" --pdf-engine /Library/TeX/texbin/pdflatex -V geometry:margin=1in -o "%:r.pdf" && open -a Skim "%:r.pdf"<CR><bar>:redraw!<CR>
 autocmd Filetype markdown map <F6> :silent !/usr/local/bin/pandoc "%" --pdf-engine /Library/TeX/texbin/pdflatex --toc -V geometry:margin=1in -o "%:r.pdf" && open -a Skim "%:r.pdf"<CR><bar>:redraw!<CR>
 
+set path+=**
+set wildmenu
+
 set number
 set relativenumber
 set background=dark 
@@ -53,13 +56,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'dylanaraps/wal.vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end() 
 
 " let g:markdown_enable_folding = 1
 let g:markdown_enable_conceal = 1
 let g:vimtex_view_method = 'skim'
-let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_autoclose_preview_window_after_completion=1
 
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -81,5 +85,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+let g:vimwiki_list = [{'path': '~/nas-wiki/wiki', 'path_html': '~/nas-wiki/html'}]
+
 let g:airline_theme='cool'
-colorscheme wal
+colorscheme brogrammer
