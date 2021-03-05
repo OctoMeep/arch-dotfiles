@@ -1,0 +1,6 @@
+#!/bin/bash
+wal -i ~/Pictures/wallpapers/
+betterlockscreen -u ~/.cache/wal/wal -b 3
+wal-discord
+beautifuldiscord --css ~/.cache/wal-discord/style.css
+/usr/local/src/intellijPywal/intellijPywalGen.sh ~/.config/JetBrains/IdeaIC2020.3
