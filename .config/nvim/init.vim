@@ -74,6 +74,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'leanprover/lean.vim'
 
 call plug#end() 
 
@@ -93,6 +97,6 @@ let g:vimwiki_list = [{'path': '~/nas-wiki/wiki', 'path_html': '~/nas-wiki/html'
 let g:UltiSnipsExpandTrigger="<tab>"
 
 
-let g:airline_theme='wal'
-colorscheme wal
-" call one#highlight('PMenu', 'abb2bf', '', 'none')
+let g:airline_theme='one'
+colorscheme one
+call one#highlight('PMenu', 'abb2bf', '', 'none')

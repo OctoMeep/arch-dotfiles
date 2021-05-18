@@ -2,6 +2,8 @@
 
 xss-lock -- betterlockscreen -l blur &
 wal -R
+wal-discord
+beautifuldiscord --css ~/.cache/wal-discord/style.css
 killall -q polybar
 sxhkd &
 polybar main &
